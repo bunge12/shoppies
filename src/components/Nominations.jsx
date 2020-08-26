@@ -9,17 +9,17 @@ const Container = styled.div`
 const Single = styled.li``;
 const List = styled.ul``;
 
-export default function Results(props) {
-  let searchResult = <Single>Search some movies!</Single>;
+export default function Nominations(props) {
+  let list = <Single>Select some movies to nominate!</Single>;
   props.data &&
-    (searchResult = props.data.map((each, index) => (
+    (list = props.data.map((each, index) => (
       <Single key={index}>{each.Title}</Single>
     )));
 
   return (
     <Container>
-      Search results:
-      <List>{searchResult}</List>
+      Nominations:
+      <List>{list}</List>
     </Container>
   );
 }
