@@ -92,12 +92,90 @@ const data = {
   totalResults: "129",
   Response: "True",
 };
-
+const nomin = [
+  {
+    Title: "Ram Jaane",
+    Year: "1995",
+    imdbID: "tt0114231",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTc1MDkzODk2Nl5BMl5BanBnXkFtZTcwNjA2ODgzMQ@@._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Lakhan",
+    Year: "1989",
+    imdbID: "tt0098168",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjI1MjQ4MzIxNl5BMl5BanBnXkFtZTgwMTEzNzg3NjE@._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Teri Ganga Maili",
+    Year: "1985",
+    imdbID: "tt0152139",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAwNDE4Nzk4NF5BMl5BanBnXkFtZTYwMTUzMjQ5._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Aur Shyam",
+    Year: "1967",
+    imdbID: "tt0062177",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjE0OTY1MjI5NV5BMl5BanBnXkFtZTcwMjAyOTQyMQ@@._V1_SX300.jpg",
+  },
+];
+const nomin5 = [
+  {
+    Title: "Hey Ram",
+    Year: "2000",
+    imdbID: "tt0222012",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BY2U3ZWVmODEtZDRiNy00YmFiLTg5ZjEtNzU2ZmJhYzQzZGQ0XkEyXkFqcGdeQXVyODEzOTQwNTY@._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Jaane",
+    Year: "1995",
+    imdbID: "tt0114231",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTc1MDkzODk2Nl5BMl5BanBnXkFtZTcwNjA2ODgzMQ@@._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Lakhan",
+    Year: "1989",
+    imdbID: "tt0098168",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjI1MjQ4MzIxNl5BMl5BanBnXkFtZTgwMTEzNzg3NjE@._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Teri Ganga Maili",
+    Year: "1985",
+    imdbID: "tt0152139",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAwNDE4Nzk4NF5BMl5BanBnXkFtZTYwMTUzMjQ5._V1_SX300.jpg",
+  },
+  {
+    Title: "Ram Aur Shyam",
+    Year: "1967",
+    imdbID: "tt0062177",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjE0OTY1MjI5NV5BMl5BanBnXkFtZTcwMjAyOTQyMQ@@._V1_SX300.jpg",
+  },
+];
 storiesOf("App", module)
   .add("SearchBar", () => <Search callback={action("ch")} />)
   .add("Results", () => <Results></Results>)
   .add("Results with search", () => <Results data={data["Search"]}></Results>)
-  .add("Nominations Empty", () => <Nominations></Nominations>)
-  .add("Nominations with results", () => (
-    <Nominations data={data["Search"]}></Nominations>
+  .add("Nominations Empty", () => <Nominations data={[]}></Nominations>)
+  .add("Nominations with under 5 results", () => (
+    <Nominations data={nomin}></Nominations>
+  ))
+  .add("Nominations five results", () => (
+    <Nominations data={nomin5}></Nominations>
   ));
