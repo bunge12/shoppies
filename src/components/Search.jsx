@@ -12,9 +12,10 @@ const Container = styled.div`
 
 const SearchBar = styled.input`
   display: block;
-  width: 92%;
+  width: calc(100% - 2.5rem);
   margin-top: 0.5rem;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: 2.5rem;
   background-image: url(${icon});
   background-repeat: no-repeat;
@@ -22,6 +23,8 @@ const SearchBar = styled.input`
   border-radius: 5px;
   border: 1px solid #c7d0d5;
 `;
+
+const Title = styled.div``;
 
 export default function Search(props) {
   const informApp = props.callback;
@@ -33,7 +36,7 @@ export default function Search(props) {
 
   return (
     <Container>
-      Movie title:
+      <Title>Movie title:</Title>
       <SearchBar
         key={"searchbar"}
         type="text"

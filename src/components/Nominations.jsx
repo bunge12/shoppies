@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 const Container = styled.div`
   padding: 1.5rem;
@@ -7,7 +8,7 @@ const Container = styled.div`
   border-radius: 5px;
   border: 1px #dbe0e4;
   box-shadow: 0 0 2px #dbe0e4;
-  width: 50%;
+  width: 43%;
 `;
 
 const Info = styled.div`
@@ -32,6 +33,12 @@ export default function Nominations(props) {
     (list = props.data.map((each, index) => (
       <Single key={["nom", index]}>
         {each.Title} ({each.Year})
+        <Button
+          key={[index, each.Title, each.Year]}
+          name="Remove"
+          callback={props.callback}
+          value={index}
+        ></Button>
       </Single>
     )));
 

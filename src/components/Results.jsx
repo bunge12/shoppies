@@ -8,7 +8,7 @@ const Container = styled.div`
   border-radius: 5px;
   border: 1px #dbe0e4;
   box-shadow: 0 0 2px #dbe0e4;
-  width: 50%;
+  width: 43%;
 `;
 
 const Single = styled.li`

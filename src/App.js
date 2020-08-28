@@ -8,6 +8,8 @@ import styled from "styled-components";
 
 const Columns = styled.div`
   display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
 `;
 
 function App() {
@@ -30,10 +32,15 @@ function App() {
       ...nominations,
       { Title: movieInfo[0], Year: movieInfo[1] },
     ]);
+    console.log(nominations);
+  };
+  const remove = (data) => {
+    nominations.splice(data, 1);
+    setNominations([...nominations]);
   };
   return (
     <div className="App">
-      Shoppies
+      <h1>The Shoppies</h1>
       <Search callback={searchCallback}></Search>
       <Columns>
         <Results
@@ -41,7 +48,7 @@ function App() {
           data={results["Search"]}
           callback={nominate}
         ></Results>
-        <Nominations data={nominations}></Nominations>
+        <Nominations data={nominations} callback={remove}></Nominations>
       </Columns>
     </div>
   );
