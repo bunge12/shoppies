@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: 5px;
   border: 1px #dbe0e4;
   box-shadow: 0 0 2px #dbe0e4;
-  width: 45%;
+  width: 50%;
 `;
 
 const Info = styled.div`
@@ -21,14 +21,16 @@ const Info = styled.div`
   border-radius: 0.25rem;
 `;
 
-const Single = styled.li``;
+const Single = styled.li`
+  padding: 0.5rem;
+`;
 const List = styled.ul``;
 
 export default function Nominations(props) {
   let list = <Single>Select some movies to nominate!</Single>;
   props.data.length > 0 &&
     (list = props.data.map((each, index) => (
-      <Single key={index}>
+      <Single key={["nom", index]}>
         {each.Title} ({each.Year})
       </Single>
     )));

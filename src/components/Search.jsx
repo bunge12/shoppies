@@ -35,6 +35,7 @@ export default function Search(props) {
     <Container>
       Movie title:
       <SearchBar
+        key={"searchbar"}
         type="text"
         placeholder="Enter movie title"
         id="name-input"

@@ -8,7 +8,7 @@ const Container = styled.div`
   border-radius: 5px;
   border: 1px #dbe0e4;
   box-shadow: 0 0 2px #dbe0e4;
-  width: 45%;
+  width: 50%;
 `;
 
 const Single = styled.li`
@@ -21,10 +21,10 @@ export default function Results(props) {
   props.data &&
     (searchResult = props.data.map((each, index) => (
       <>
-        <Single key={index}>
+        <Single key={[index, each.Title, each.Year]}>
           {each.Title} ({each.Year})
           <Button
-            key={[each.Title, each.Year]}
+            key={[index, each.Title, each.Year]}
             name="Nominate"
             callback={props.callback}
             value={[each.Title, each.Year]}
@@ -35,7 +35,9 @@ export default function Results(props) {
 
   return (
     <Container>
-      Search results for "{props.term}":
+      {props.term === ""
+        ? "Search for some movies!"
+        : `Search results for ${props.term}:`}
       <List>{searchResult}</List>
     </Container>
   );
