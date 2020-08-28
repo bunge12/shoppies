@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 const Container = styled.div`
   padding: 1.5rem;
@@ -19,14 +20,22 @@ export default function Results(props) {
   let searchResult = <Single>Search some movies!</Single>;
   props.data &&
     (searchResult = props.data.map((each, index) => (
-      <Single key={index}>
-        {each.Title} ({each.Year})
-      </Single>
+      <>
+        <Single key={index}>
+          {each.Title} ({each.Year})
+          <Button
+            key={[each.Title, each.Year]}
+            name="Nominate"
+            callback={props.callback}
+            value={[each.Title, each.Year]}
+          ></Button>
+        </Single>
+      </>
     )));
 
   return (
     <Container>
-      Search results:
+      Search results for "{props.term}":
       <List>{searchResult}</List>
     </Container>
   );

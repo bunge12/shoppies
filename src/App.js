@@ -4,13 +4,19 @@ import "./App.css";
 import Search from "./components/Search";
 import Results from "./components/Results";
 import Nominations from "./components/Nominations";
+import styled from "styled-components";
+
+const Columns = styled.div`
+  display: flex;
+`;
 
 function App() {
   const [nominations, setNominations] = useState([]);
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [results, setResults] = useState({});
   const searchCallback = (data) => {
     console.log(data);
+    setSearch(data);
     axios
       .get(`http://www.omdbapi.com/?apikey=789b871e&type=movie&s=${data}`)
       .then((data) => {
@@ -18,12 +24,25 @@ function App() {
         setResults(data.data);
       });
   };
+  const nominate = (data) => {
+    const movieInfo = data.split(",");
+    setNominations([
+      ...nominations,
+      { Title: movieInfo[0], Year: movieInfo[1] },
+    ]);
+  };
   return (
     <div className="App">
       Shoppies
       <Search callback={searchCallback}></Search>
-      <Results data={results["Search"]}></Results>
-      <Nominations data={nominations}></Nominations>
+      <Columns>
+        <Results
+          term={search}
+          data={results["Search"]}
+          callback={nominate}
+        ></Results>
+        <Nominations data={nominations}></Nominations>
+      </Columns>
     </div>
   );
 }

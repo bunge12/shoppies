@@ -33,7 +33,7 @@ export default function Search(props) {
 
   return (
     <Container>
-      Search for movies:
+      Movie title:
       <SearchBar
         type="text"
         placeholder="Enter movie title"
