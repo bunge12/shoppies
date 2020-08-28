@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import icon from "../img/search.svg";
 
 const Container = styled.div`
   padding: 1.5rem;
@@ -11,6 +12,15 @@ const Container = styled.div`
 
 const SearchBar = styled.input`
   display: block;
+  width: 92%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 2.5rem;
+  background-image: url(${icon});
+  background-repeat: no-repeat;
+  background-position: 2% center;
+  border-radius: 5px;
+  border: 1px solid #c7d0d5;
 `;
 
 export default function Search(props) {
