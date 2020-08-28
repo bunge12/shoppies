@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 import Nominations from "./components/Nominations";
 import styled from "styled-components";
+import usePersistedState from "./hooks/usePersistedState";
 
 const Columns = styled.div`
   display: flex;
@@ -13,29 +14,28 @@ const Columns = styled.div`
 `;
 
 function App() {
-  const [nominations, setNominations] = useState([]);
+  // const [nominations, setNominations] = useState([]);
+  const [nominations, setNominations] = usePersistedState([]);
   const [search, setSearch] = useState("");
   const [results, setResults] = useState({});
   const searchCallback = (data) => {
-    console.log(data);
     setSearch(data);
     axios
       .get(`http://www.omdbapi.com/?apikey=789b871e&type=movie&s=${data}`)
       .then((data) => {
-        console.log(data.data);
         setResults(data.data);
       });
   };
   const nominate = (data) => {
-    const movieInfo = data.split(",");
+    const movieInfo = data.split("^");
     setNominations([
       ...nominations,
       { Title: movieInfo[0], Year: movieInfo[1] },
     ]);
-    console.log(nominations);
   };
   const remove = (data) => {
-    nominations.splice(data, 1);
+    const id = data.split("^")[0];
+    nominations.splice(id, 1);
     setNominations([...nominations]);
   };
   return (

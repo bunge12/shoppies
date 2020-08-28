@@ -28,6 +28,10 @@ const Single = styled.li`
 const List = styled.ul``;
 
 export default function Nominations(props) {
+  // const remove = (event) => {
+  //   // props.callback
+  //   console.log(event.target.value);
+  // };
   let list = <Single>Select some movies to nominate!</Single>;
   props.data.length > 0 &&
     (list = props.data.map((each, index) => (
@@ -37,14 +41,14 @@ export default function Nominations(props) {
           key={[index, each.Title, each.Year]}
           name="Remove"
           callback={props.callback}
-          value={index}
+          value={`${index}^${each.Title}^${each.Year}`}
         ></Button>
       </Single>
     )));
 
   return (
     <Container>
-      Nominations:
+      <b>Nominations:</b>
       <List>{list}</List>
       {props.data.length === 5 && (
         <Info>You've reached 5 possible nominations!</Info>

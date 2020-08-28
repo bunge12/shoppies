@@ -17,27 +17,30 @@ const Single = styled.li`
 const List = styled.ul``;
 
 export default function Results(props) {
-  let searchResult = <Single>Search some movies!</Single>;
+  let searchResult = <Single key={"none"}>Search some movies!</Single>;
   props.data &&
     (searchResult = props.data.map((each, index) => (
       <>
-        <Single key={[index, each.Title, each.Year]}>
+        <Single key={[each.Title, each.Year]}>
           {each.Title} ({each.Year})
           <Button
             key={[index, each.Title, each.Year]}
             name="Nominate"
             callback={props.callback}
-            value={[each.Title, each.Year]}
+            value={`${each.Title}^${each.Year}`}
           ></Button>
         </Single>
       </>
     )));
 
   return (
-    <Container>
-      {props.term === ""
-        ? "Search for some movies!"
-        : `Search results for ${props.term}:`}
+    <Container key={"r"}>
+      <b>
+        {props.term === ""
+          ? "Search for some movies!"
+          : `Results for "${props.term}":`}
+      </b>
+
       <List>{searchResult}</List>
     </Container>
   );
