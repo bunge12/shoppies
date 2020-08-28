@@ -15,7 +15,7 @@ const Columns = styled.div`
 
 function App() {
   // const [nominations, setNominations] = useState([]);
-  const [nominations, setNominations] = usePersistedState([]);
+  const [nominations, setNominations] = usePersistedState("list", []);
   const [search, setSearch] = useState("");
   const [results, setResults] = useState({});
   const searchCallback = (data) => {
